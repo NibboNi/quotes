@@ -1,30 +1,24 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import Header from "./components/Header";
 import Quoteblock from "./components/Quoteblock";
 import Footer from "./components/Footer";
 
+import type { Quote } from "./types";
+
 function App() {
-  const [quotes] = useState([
-    {
-      id: 1,
-      quote:
-        "El mayor espectáculo es un hombre esforzado luchando contra la adversidad; pero hay otro aún más grande: ver a otro hombre lanzarse en su ayuda.",
-      quoted: "Oliver Goldsmith",
-    },
-    {
-      id: 2,
-      quote:
-        "El mayor espectáculo es un hombre esforzado luchando contra la adversidad; pero hay otro aún más grande: ver a otro hombre lanzarse en su ayuda.",
-      quoted: "Oliver Goldsmith",
-    },
-    {
-      id: 3,
-      quote:
-        "El mayor espectáculo es un hombre esforzado luchando contra la adversidad; pero hay otro aún más grande: ver a otro hombre lanzarse en su ayuda.",
-      quoted: "Oliver Goldsmith",
-    },
-  ]);
+  const [quotes, setQuotes] = useState<Quote[]>([]);
+
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch("http://localhost:8000/");
+      const data = await response.json();
+
+      setQuotes(data);
+    }
+
+    getData();
+  }, []);
 
   return (
     <>
@@ -33,8 +27,8 @@ function App() {
         {quotes.map((block) => (
           <Quoteblock
             key={block.id}
-            quote={block.quote}
-            quoted={block.quoted}
+            content={block.content}
+            author={block.author}
           />
         ))}
       </main>
