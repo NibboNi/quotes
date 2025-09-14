@@ -1,0 +1,11 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+@import "tailwindcss";
+
+body {
+  font-family: "Geist", sans-serif;
+}
+
+.custom-scrollbar {
+  scrollbar-color: oklch(55.2% 0.016 285.938) oklch(14.1% 0.005 285.823);
+  scrollbar-width: thin;
+}
