@@ -46,7 +46,11 @@ function Footer() {
           </button>
         </div>
         <p className="text-center text-xs font-bold">
-          <a href="#" className="text-blue-500">
+          <a
+            href="https://github.com/NibboNi/quotes"
+            target="_blank"
+            className="text-blue-500"
+          >
             Repo
           </a>
           <span className="font-thin">__&copy;2025</span>
